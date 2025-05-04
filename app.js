@@ -54,7 +54,7 @@ const gameOver = (isVictory) =>{
         gameModel.querySelector("p").innerHTML = `${modelText} <b>${currentWord}</b>`;
         gameModel.classList.add("show");
 
-    }, 300);
+    }, 700);
 }
 
 
