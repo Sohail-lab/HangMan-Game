@@ -13,9 +13,11 @@ body{
     padding: 0 10px;
     justify-content: center;
     min-height: 100vh;
-    background: #5E63BA;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #333;
+    
 }
-.cotainer{
+.container{
     width: 850px;
     background: #fff;
     display: flex;
@@ -23,7 +25,9 @@ body{
     align-items: flex-end;
     padding: 60px 40px;
     border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
+
 .hangman-box img {
     max-width: 270px;
     
@@ -54,6 +58,13 @@ body{
 .word-display .letter.guessed{
     border-color: transparent;
     margin: -40px 0 35px;  
+}
+
+.keyboard button.wrong {
+    background: red!important;
+}
+.keyboard button.correct {
+    background: green !important;
 }
 .game-box h4{
     text-align: center;
@@ -96,9 +107,18 @@ body{
     pointer-events: none;
 }
 
+.keyboard button:hover,
+.play-again:hover {
+    transform: scale(1.05);
+    transition: 0.2s ease;
+}
+
 :where(.game-model, .keyboard) button:hover {
     background: #8286c9;
 
+}
+button {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 .game-model{
     position: fixed;
@@ -130,6 +150,7 @@ body{
     padding: 30px;
 
 }
+
 .game-model img{
     max-width: 130px;
 }
