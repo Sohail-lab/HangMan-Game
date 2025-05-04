@@ -18,7 +18,8 @@ body{
     
 }
 .container{
-    width: 850px;
+    width: 100%;
+    max-width: 850px;
     background: #fff;
     display: flex;
     gap: 70px;
@@ -171,17 +172,37 @@ button {
    
 }
 
-@media (max-width: 782px){
-    .container{
+@media (max-width: 768px) {
+    .container {
         flex-direction: column;
-        padding: 30px 15px;
-        align-items: center;  
+        padding: 30px 20px;
+        gap: 40px;
+        width: 100%;
     }
-    .hangman-box img{
-        max-width: 200px;
 
+    .hangman-box img {
+        max-width: 150px;
     }
-    .hangman-box h1{
-        display: none;
+
+    .word-display {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .word-display .letter {
+        width: 22px;
+        font-size: 1.5rem;
+        margin-bottom: 30px;
+    }
+
+    .keyboard button {
+        width: calc(100% / 8 - 5px);
+        padding: 6px;
+        font-size: 0.9rem;
+    }
+
+    .game-model .content {
+        max-width: 90%;
+        padding: 20px;
     }
 }
