@@ -25,14 +25,25 @@ const resetGame = () =>{
 
 const  getRandomword = () =>{
 
-    const {word, hint} = wordList[Math.floor(Math.random() * wordList.length)];
-    currentWord = word;
-    // console.log(word);
-    document.querySelector(".hint-text b").innerText = hint;
-    resetGame();
-   
+    let foundRandom = false;
+    while(!foundRandom) {
+        const {word, hint} = wordList[Math.floor(Math.random() * wordList.length)];
+        currentWord = word;
+        if(!usedWords.includes(currentWord)) {
+            usedWords.push(currentWord);
+            document.querySelector(".hint-text b").innerText = hint;
+            resetGame();
+            foundRandom = true;
+        }
+    }
+    if(usedWords.length == wordList.length) {
+        usedWords = [];
+    }
+    console.log(usedWords);
 
 };
+
+let usedWords = [];
 
 
 const gameOver = (isVictory) =>{
@@ -47,31 +58,40 @@ const gameOver = (isVictory) =>{
 }
 
 
-const initGame = (button, clickedLetter) =>{
-    // console.log(button, clickedLetter);
-    if (currentWord.includes(clickedLetter)){
-        // console.log(clickedLetter, "is exist on the word");
-        [...currentWord].forEach((letter, index) =>{ // showing all correct letters on the word display
-            if(letter === clickedLetter){
+const initGame = (button, clickedLetter) => {
+    if (currentWord.includes(clickedLetter)) {
+        [...currentWord].forEach((letter, index) => {
+            if (letter === clickedLetter) {
                 correctLetters.push(letter);
-                wordDisplay.querySelectorAll("li")[index].innerText = letter;
-                wordDisplay.querySelectorAll("li")[index].classList.add("guessed");
+                const letterEl = wordDisplay.querySelectorAll("li")[index];
+                letterEl.innerText = letter;
+                letterEl.classList.add("guessed");
+
+                
+                button.classList.add("correct");
+                setTimeout(() => {
+                    button.classList.remove("correct");
+                }, 500);
             }
-        })
-    }else{
-        // console.log(clickedLetter, "is not exist on the word")
-        // if clicked letter does not exist then update the wrongGuessCount and hangman image 
+        });
+    } else {
         wrongGuessCount++;
         hangmanImage.src = `images/hangman-${wrongGuessCount}.svg`;
+
+        
+        button.classList.add("wrong");
+        setTimeout(() => {
+            button.classList.remove("wrong");
+        }, 500);
     }
 
     button.disabled = true;
     guessesText.innerText = `${wrongGuessCount} / ${maxGuesses}`;
 
-    // calling gameOver function if any of these condition meets
-    if(wrongGuessCount === maxGuesses) return gameOver(false);
-    if(correctLetters.length === currentWord.length) return gameOver(true);
-}
+    if (wrongGuessCount === maxGuesses) return gameOver(false);
+    if (correctLetters.length === currentWord.length) return gameOver(true);
+};
+
 
 //  creating keyboard btns and adding eventlistener
 for(let i=97; i <= 122; i++) {
