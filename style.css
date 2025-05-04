@@ -172,7 +172,7 @@ button {
 }
 
 @media (max-width: 782px){
-    .cotainer{
+    .container{
         flex-direction: column;
         padding: 30px 15px;
         align-items: center;  
