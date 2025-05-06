@@ -1,13 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hangman Game</title>
     <link rel="stylesheet" href="style.css">
-    
 </head>
+
 <body>
+
+    <div class="timer-container">
+      <span id="timer">00:00</span>
+    </div>
+    <button class="skip-word">Skip</button>
+    <div class="difficulty-container">
+        <select id="mode" aria-label="Difficulty">
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+        </select>
+    </div>
+
+    <div class="score_container">Score: <span id="score">0</span></div>
+
     <div class="game-model">
         <div class="content">
             <img src="images/lost.gif" alt="gif">
@@ -16,11 +32,13 @@
             <button class="play-again">Play Again</button>
         </div>
     </div>
+
     <div class="container">
         <div class="hangman-box">
             <img src="images/hangman-0.svg" alt="">
             <h1>HangMan Game</h1>
         </div>
+
         <div class="game-box">
             <ul class="word-display"></ul>
             <h4 class="hint-text">
@@ -33,13 +51,10 @@
             </h4>
 
             <div class="keyboard"></div>
-
         </div>
     </div>
-    <!-- <script src="app.js"></script> -->
-    <!-- <script src="word-list.js"></script> -->
-    <script type="module" src="app.js"></script>
-    
 
+    <script type="module" src="app.js"></script>
 </body>
+
 </html>
