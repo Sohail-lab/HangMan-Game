@@ -1,25 +1,58 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap");
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Open Sans", sans-serif;
 
 }
-body{
+
+body {
     display: flex;
     align-items: center;
     padding: 0 10px;
     justify-content: center;
     min-height: 100vh;
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: linear-gradient(135deg, #9370DB, #BA55D3);
     color: #333;
-    
+
 }
-.container{
+
+.skip-word {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+    background-color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 70px;
+    left: 75%;
+    transform: translateX(-50%);
+    z-index: 10;
+    margin-top: 10px;
+
+}
+
+.timer-container {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+    background-color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 70px;
+    left: 25%;
+    transform: translateX(-50%);
+    z-index: 10;
+    margin-top: 10px;
+}
+
+.container {
     width: 100%;
-    max-width: 850px;
+    max-width: 900px;
     background: #fff;
     display: flex;
     gap: 70px;
@@ -31,22 +64,67 @@ body{
 
 .hangman-box img {
     max-width: 270px;
-    
+
 }
-.hangman-box h1{
+
+.hangman-box h1 {
     font-size: 1.45rem;
     margin-top: 20px;
     text-align: center;
-    text-transform: uppercase;   
+    text-transform: uppercase;
 }
 
-.word-display{
+.difficulty-container {
+    position: absolute;
+    font-family: "Open Sans", sans-serif;
+    color: #333;
+    top: 65px;
+    left: 75%;
+    transform: translateX(-50%);
+    z-index: 10;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+#mode {
+    font-family: 2px;
+}
+
+.difficulty-container select {
+
+    font-size: 14px;
+    font-weight: bold;
+    padding: 10px;
+    border: 1px solid plum;
+    border-radius: 5px;
+    background-color: white;
+    color: black;
+}
+
+.score_container {
+
+    position: absolute;
+    font-family: "Open Sans", sans-serif;
+    font-weight: bold;
+    color: #333;
+    background-color: #f2f2f2;
+    top: 75px;
+    left: 25%;
+    transform: translateX(-50%);
+    z-index: 10;
+    padding: 10px 20px;
+    border-radius: 5px;
+
+}
+
+.word-display {
     display: flex;
     gap: 10px;
     list-style: none;
     align-items: center;
     justify-content: center;
 }
+
 .word-display .letter {
     width: 28px;
     font-size: 2rem;
@@ -56,54 +134,62 @@ body{
     margin-bottom: 40px;
     border-bottom: 3px solid #000;
 }
-.word-display .letter.guessed{
+
+.word-display .letter.guessed {
     border-color: transparent;
-    margin: -40px 0 35px;  
+    margin: -40px 0 35px;
 }
 
 .keyboard button.wrong {
-    background: red!important;
+    background: red !important;
 }
+
 .keyboard button.correct {
     background: green !important;
 }
-.game-box h4{
+
+.game-box h4 {
     text-align: center;
     font-size: 1rem;
     font-weight: 500;
     margin-bottom: 15px;
 }
-.game-box h4 b{
-    font-weight: 600;  
+
+.game-box h4 b {
+    font-weight: 600;
 }
 
-.game-box .guesses-text b{
+.game-box .guesses-text b {
     color: #ff0000;
 
 }
-.game-box .keyboard{
+
+.game-box .keyboard {
     display: flex;
     gap: 5px;
     margin-top: 40px;
     flex-wrap: wrap;
     justify-content: center;
 }
-:where(.game-model, .keyboard) button{
+
+:where(.game-model, .keyboard) button {
     color: #fff;
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
     outline: none;
     border: none;
-    background: #5E63BA;
+    background: #BA55D3;
     border-radius: 4px;
     text-transform: uppercase;
 }
-.keyboard button{
+
+.keyboard button {
     padding: 7px;
     width: calc(100%/9 - 5px);
 }
-.keyboard button[disabled]{
+
+.keyboard button[disabled] {
     opacity: 0.6;
     pointer-events: none;
 }
@@ -115,13 +201,15 @@ body{
 }
 
 :where(.game-model, .keyboard) button:hover {
-    background: #8286c9;
+    background: #9370DB;
 
 }
+
 button {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-.game-model{
+
+.game-model {
     position: fixed;
     left: 0;
     width: 100%;
@@ -133,16 +221,17 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgba(0,0,0,0.6);
+    background: rgba(0, 0, 0, 0.6);
     transition: opacity 0.4s ease;
 
 }
-.game-model.show{
+
+.game-model.show {
     opacity: 1;
     pointer-events: auto;
 }
 
-.game-model .content{
+.game-model .content {
     background: #fff;
     max-width: 420px;
     width: 100%;
@@ -152,53 +241,91 @@ button {
 
 }
 
-.game-model img{
+.game-model img {
     max-width: 130px;
 }
-.game-model h4{
+
+.game-model h4 {
     font-size: 1.53rem;
 }
-.game-model p{
+
+.game-model p {
     font-size: 1.15rem;
     margin: 15px 0 30px;
     font-weight: 500;
 }
-.game-model p b{
+
+.game-model p b {
     color: #5E63BA;
 
 }
-.game-model button{
+
+.game-model button {
     padding: 12px 23px;
-   
+
 }
+
 
 @media (max-width: 768px) {
     .container {
+        display: flex;
         flex-direction: column;
+        align-items: center;
+        justify-content: center;
         padding: 30px 20px;
         gap: 40px;
         width: 100%;
     }
 
+    .hangman-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
     .hangman-box img {
         max-width: 150px;
+        width: 100%;
+        height: auto;
+    }
+
+    .hangman-box .text {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 1.5rem;
+        font-weight: bold;
     }
 
     .word-display {
         flex-wrap: wrap;
         gap: 8px;
+        justify-content: center;
     }
 
     .word-display .letter {
         width: 22px;
         font-size: 1.5rem;
         margin-bottom: 30px;
+        text-align: center;
+    }
+
+    .keyboard {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px;
     }
 
     .keyboard button {
-        width: calc(100% / 8 - 5px);
+        width: 40px;
+        height: 40px;
         padding: 6px;
         font-size: 0.9rem;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .game-model .content {
