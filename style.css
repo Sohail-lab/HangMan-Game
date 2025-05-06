@@ -27,7 +27,7 @@ body {
     padding: 10px 20px;
     border-radius: 5px;
     position: absolute;
-    bottom: 70px;
+    bottom: 50px;
     left: 75%;
     transform: translateX(-50%);
     z-index: 10;
@@ -43,7 +43,7 @@ body {
     padding: 10px 20px;
     border-radius: 5px;
     position: absolute;
-    bottom: 70px;
+    bottom: 50px;
     left: 25%;
     transform: translateX(-50%);
     z-index: 10;
@@ -78,7 +78,7 @@ body {
     position: absolute;
     font-family: "Open Sans", sans-serif;
     color: #333;
-    top: 65px;
+    top: 55px;
     left: 75%;
     transform: translateX(-50%);
     z-index: 10;
@@ -108,7 +108,7 @@ body {
     font-weight: bold;
     color: #333;
     background-color: #f2f2f2;
-    top: 75px;
+    top: 55px;
     left: 25%;
     transform: translateX(-50%);
     z-index: 10;
