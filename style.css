@@ -46,14 +46,17 @@ body {
     transform: none !important;
     margin: 0 !important;
 }
+.skip-word{
+    border: 2px solid plum;
+}
 
 .timer-container {
     font-size: 1rem;
     font-weight: bold;
-    color: #333;
+    color: black;
     background-color: #fff;
     padding: 0.6rem 2rem;
-    border: 0.12rem solid black;
+    border: 0.12rem solid plum;
     border-radius: 0.8rem;
 }
 
@@ -71,7 +74,7 @@ body {
     font-size: 1rem;
     font-weight: bold;
     padding: 0.6rem;
-    border: 1px solid plum;
+    border: 2px solid plum;
     border-radius: 0.8rem;
     background-color: white;
     color: black;
@@ -79,10 +82,11 @@ body {
 
 .score_container {
     font-weight: bold;
-    color: #333;
-    background-color: #f2f2f2;
+    color: black;
+    background-color:white;
     padding: 10px 20px;
-    border-radius: 5px;
+    border: 2px  solid plum;
+    border-radius: 0.8rem;
 }
 
 .container {
@@ -104,7 +108,7 @@ body {
 
 .hangman-box h1 {
     font-size: 1.45rem;
-    margin-top: 20px;
+    margin-top: 10px;
     text-align: center;
     text-transform: uppercase;
 }
@@ -144,7 +148,7 @@ body {
     text-align: center;
     font-size: 1.1rem;
     font-weight: 500;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .game-box h4 b {
