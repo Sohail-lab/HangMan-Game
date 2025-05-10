@@ -251,3 +251,83 @@ button {
 .game-model button {
     padding: 12px 23px;
 }
+
+
+@media (max-width: 992px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+        padding: 40px 20px;
+        gap: 40px;
+        width: 95%;
+    }
+
+    .hangman-box img {
+        max-width: 200px;
+    }
+
+    .keyboard button {
+        width: calc(100% / 8 - 5px);
+        padding: 6px;
+    }
+}
+
+
+@media (max-width: 600px) {
+    .top-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        padding: 1rem;
+    }
+
+    .header-left,
+    .header-right {
+        justify-content: space-between;
+        gap: 1rem;
+    }
+
+    .difficulty-container select,
+    .skip-word,
+    .timer-container {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+    }
+
+    .container {
+        padding: 30px 15px;
+        gap: 30px;
+    }
+
+    .hangman-box img {
+        max-width: 150px;
+    }
+
+    .word-display .letter {
+        width: 24px;
+        font-size: 1.6rem;
+    }
+
+    .keyboard button {
+        width: calc(100% / 7 - 5px);
+        padding: 5px;
+        font-size: 0.85rem;
+    }
+
+    .game-model .content {
+        padding: 20px;
+    }
+
+    .game-model h4 {
+        font-size: 1.3rem;
+    }
+
+    .game-model p {
+        font-size: 1rem;
+    }
+
+    .game-model button {
+        padding: 10px 20px;
+        font-size: 0.95rem;
+    }
+}
