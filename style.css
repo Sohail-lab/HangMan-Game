@@ -93,6 +93,7 @@ body {
     gap: 70px;
     align-items: flex-end;
     padding: 60px 40px;
+    margin-top: 40px;
     border-radius: 10px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
