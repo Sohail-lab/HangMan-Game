@@ -17,7 +17,7 @@ export const easyWords = [
   { word: "secret", hint: "I'm known by few and guarded by silence."},
   { word: "fog",hint: "I blur your vision, not your thoughts."},
   { word: "jamun",hint: "This purple fruit stains your tongue like royalty."},
-  { word: "Hulk",hint: "A brilliant scientist having 7 phd degree who transforms into a giant"},
+  { word: "hulk",hint: "A brilliant scientist having 7 phd degree who transforms into a giant"},
   { word: "deadpool",hint: "A superhero with a healing factor, known for his dark humor."},
   { word: "nobita",hint: "I am a lazy boy who always gets saved by a cat from the future."},
   
