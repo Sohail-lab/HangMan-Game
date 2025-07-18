@@ -17,6 +17,16 @@ export default function Index() {
     const maxGuesses = 6;
     let shownWords = [];
 
+    const getRandomRiddle = () => {
+        if(difficulty === 'hard') {
+            return hardWords[Math.floor(Math.random() * hardWords.length)];
+        }
+        else if(difficulty === 'medium') {
+            return mediumWords[Math.floor(Math.random() * mediumWords.length)];
+        }
+        return easyWords[Math.floor(Math.random() * easyWords.length)];
+    };
+
     const handleKeyPress = (letter: string) => {
         console.log(letter);
     };
@@ -34,10 +44,10 @@ export default function Index() {
     return (
         <SafeAreaView>
             <StatusBar backgroundColor="#ffffff" barStyle="dark-content" />
-            <View className="items-center justify-center bg-white">
-            <Text className="text-3xl font-bold text-blue-500">
-                HangMan Game
-            </Text>
+            <View className="items-center justify-center bg-white py-1">
+                <Text className="text-4xl font-bold text-blue-500">
+                    HangMan Game
+                </Text>
         </View>
             <View className="flex-row justify-between ml-1 mr-1 py-2 bg-white">
                 <Text className="text-xl font-bold text-gray-600">
@@ -66,9 +76,16 @@ export default function Index() {
                 </Picker>
             </View>
 
-            <View className="items-center mt-2 justify-center">
+            <View className="items-center mt-4 justify-center">
                 <Image source={hangmanImages[incorrectGuesses]} style={{ width: 200, height: 200 }} />
             </View>
+
+            <View className="items-center justify-center mt-2">
+                <Text className="text-xl font-bold text-center px-2">
+                    {getRandomRiddle().hint}
+                </Text>
+            </View>
+
             <View className="items-center mt-5 justify-center">
                 <Keyboard onKeyPress={handleKeyPress} />
             </View>

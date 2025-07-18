@@ -20,7 +20,6 @@ export const easyWords = [
   { word: "hulk",hint: "A brilliant scientist having 7 phd degree who transforms into a giant"},
   { word: "deadpool",hint: "A superhero with a healing factor, known for his dark humor."},
   { word: "nobita",hint: "I am a lazy boy who always gets saved by a cat from the future."},
-
 ];
 
 export const mediumWords = [
@@ -45,7 +44,6 @@ export const mediumWords = [
   { word:"balloon",hint:"I am 'big' when you blow me, 'small' when you let me go"},
   { word:"shinchan",hint: "He’s the little rascal who can’t sit still, is always in trouble, and has a talent for embarrassing everyone—especially his parents!"},
   { word:"kara", hint:"I am the last daughter of a lost world!, flying in my cousin's shadow"},
-
 ];
 
 
