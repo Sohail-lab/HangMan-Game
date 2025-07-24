@@ -1,12 +1,12 @@
-import "./global.css"
+import "./global.css";
 import {StatusBar, Text, TouchableOpacity, View} from "react-native";
 import {SafeAreaView} from "react-native-safe-area-context";
 import Timer from '../utils/timer';
 import Keyboard from '../utils/keyboard';
 import {Picker} from "@react-native-picker/picker";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {Image} from "expo-image";
-import {easyWords, mediumWords, hardWords} from '../utils/wordList'
+import {easyWords, mediumWords, hardWords} from '../utils/wordList';
 
 export default function Index() {
     const [score, setScore] = useState(0);
@@ -15,21 +15,64 @@ export default function Index() {
     const [incorrectGuesses, setIncorrectGuesses] = useState(6);
 
     const maxGuesses = 6;
-    let shownWords = [];
 
     const getRandomRiddle = () => {
+        let riddle = { word: '', hint: ''};
         if(difficulty === 'hard') {
-            return hardWords[Math.floor(Math.random() * hardWords.length)];
+            riddle = hardWords[Math.floor(Math.random() * hardWords.length)];
+            hardWords.splice(hardWords.indexOf(riddle), 1);
+            return riddle;
         }
         else if(difficulty === 'medium') {
-            return mediumWords[Math.floor(Math.random() * mediumWords.length)];
+            riddle =  mediumWords[Math.floor(Math.random() * mediumWords.length)];
+            mediumWords.splice(mediumWords.indexOf(riddle), 1);
+            return riddle;
         }
-        return easyWords[Math.floor(Math.random() * easyWords.length)];
+        riddle = easyWords[Math.floor(Math.random() * easyWords.length)];
+        easyWords.splice(easyWords.indexOf(riddle), 1);
+        return riddle;
     };
 
+    const [currentRiddle, setCurrentRiddle] = useState(getRandomRiddle());
+    const [userAnswer, setUserAnswer] = useState<string[]>([]);
+
+    useEffect(() => {
+        setUserAnswer(Array(currentRiddle.word.length).fill(''));
+    }, [currentRiddle]);
+
     const handleKeyPress = (letter: string) => {
-        console.log(letter);
+        const currentLetter = letter.toLowerCase();
+        const answerSize = currentRiddle.word.length;
+        const updatedAnswer = [...userAnswer];
+        if(currentRiddle.word.includes(currentLetter) && !userAnswer.includes(currentLetter)) {
+            for(let i = 0; i < answerSize; i++) {
+                if(currentRiddle.word[i] === currentLetter) {
+                    updatedAnswer[i] = currentLetter;
+                }
+            }
+        }
+        setUserAnswer(updatedAnswer);
+        checkAnswer(userAnswer.join(''));
     };
+
+    const checkAnswer = (userAnswer : string) => {
+        if(userAnswer === currentRiddle.word) {
+            if(difficulty === 'easy') {
+                setScore(score + 10);
+            }
+            else if(difficulty === 'medium') {
+                setScore(score + 15);
+            }
+            setScore(score + 30);
+            console.log(score);
+            setCurrentRiddle(getRandomRiddle());
+            setUserAnswer(Array(currentRiddle.word.length).fill(''));
+        }
+    };
+
+    useEffect(() => {
+        console.log(userAnswer.join(''));
+    }, [userAnswer]);
 
     const hangmanImages = [
         require('../assets/images/hangman-0.png'),
@@ -82,7 +125,7 @@ export default function Index() {
 
             <View className="items-center justify-center mt-2">
                 <Text className="text-xl font-bold text-center px-2">
-                    {getRandomRiddle().hint}
+                    {currentRiddle.hint}
                 </Text>
             </View>
 
