@@ -1,7 +1,7 @@
 import {useState} from "react";
 import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
 
-const ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+const ALPHABET = 'QWERTYUIOPASDFGHJKLZXCVBNM'.split('');
 
 const Keyboard = ({ onKeyPress } : { onKeyPress: (letter: string) => void}) => {
     const [pressedKeys, setPressedKeys] = useState<string[]>([]);

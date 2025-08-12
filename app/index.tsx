@@ -6,7 +6,7 @@ import Keyboard from '../utils/keyboard';
 import {Picker} from "@react-native-picker/picker";
 import {useEffect, useState} from "react";
 import {Image} from "expo-image";
-import {easyWords, mediumWords, hardWords} from '../utils/wordList';
+import {easyWords, mediumWords, hardWords} from '@/utils/wordList';
 
 export default function Index() {
     const [score, setScore] = useState(0);
@@ -91,20 +91,20 @@ export default function Index() {
                 <Text className="text-4xl font-bold text-blue-500">
                     HangMan Game
                 </Text>
-        </View>
-            <View className="flex-row justify-between ml-1 mr-1 py-2 bg-white">
+            </View>
+            <View className="flex-row justify-between ml-1 mr-1 px-1 py-2 bg-white">
                 <Text className="text-xl font-bold text-gray-600">
                     Score: {score}
                 </Text>
-                <Timer/>
-                <TouchableOpacity>
-                    <Text className="text-gray-600 text-xl font-bold">
+
+                <TouchableOpacity className="bg-gray-300 rounded-l-md">
+                    <Text className="text-gray-600 text-xl font-bold px-0.5">
                         Skip Word
                     </Text>
                 </TouchableOpacity>
             </View>
-            <View className="bg-white justify-between" style={{flexDirection:"row", alignItems:"center"}}>
-                <Text className="text-xl font-bold text-gray-600 ml-1">
+            <View className="bg-white justify-between px-1 ml-1 mr-1" style={{flexDirection:"row", alignItems:"center"}}>
+                <Text className="text-xl font-bold text-gray-600">
                     Difficulty:
                 </Text>
                 <Picker
@@ -117,6 +117,10 @@ export default function Index() {
                     <Picker.Item label="Medium" value="medium" />
                     <Picker.Item label="Hard" value="hard" />
                 </Picker>
+                <Text className="text-xl font-bold text-gray-600">
+                    Time Left:
+                </Text>
+                <Timer/>
             </View>
 
             <View className="items-center mt-4 justify-center">
